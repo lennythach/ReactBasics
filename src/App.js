@@ -62,7 +62,7 @@ function App() {
     
   {showEvents && <EventList events={events} deleteEvent={deleteEvent}/>}
     
-    {showModal && <Modal handleClose={()=>handleClose()} isSaleModal={false} >
+    {showModal && <Modal handleClose={()=>handleClose()} isSaleModal={true} >
       <h2>20% Coupon Code</h2>
       <p>Use code thach12 at checkout!</p>
     </Modal>}
