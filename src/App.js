@@ -2,12 +2,13 @@
 import './App.css';
 import Title from './components/Title';
 import Modal from './components/Modal';
+import EventList from './components/EventList';
 import React, {useState} from 'react';
 
 function App() {
   //----------States----------//
   const [showModal, setShowModal] = useState(false);
-  const [showEvents, setShowEvent] = useState(true);
+  const [showEvents, setShowEvent] = useState(false);
   let [name, setName] = useState('Meiling');
 
   let [events, setEvents] = useState([
@@ -59,17 +60,9 @@ function App() {
       </div>
     )}
     
-
-    {showEvents && events.map((event)=>{
-      return (
-        <React.Fragment key={event.id}>
-          <h2>{event.event}</h2>
-          <button onClick={()=>deleteEvent(event.id)}>Delete Event</button>
-        </React.Fragment>
-      )
-    })}
+  {showEvents && <EventList events={events} deleteEvent={deleteEvent}/>}
     
-    {showModal && <Modal handleClose={()=>handleClose()}>
+    {showModal && <Modal handleClose={()=>handleClose()} isSaleModal={false} >
       <h2>20% Coupon Code</h2>
       <p>Use code thach12 at checkout!</p>
     </Modal>}
