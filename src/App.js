@@ -4,6 +4,7 @@ import Title from './components/Title';
 import Modal from './components/Modal';
 import EventList from './components/EventList';
 import React, {useState} from 'react';
+import NewEventList from './components/NewEventList';
 
 function App() {
   //----------States----------//
@@ -63,8 +64,7 @@ function App() {
   {showEvents && <EventList events={events} deleteEvent={deleteEvent}/>}
     
     {showModal && <Modal handleClose={()=>handleClose()} isSaleModal={true} >
-      <h2>20% Coupon Code</h2>
-      <p>Use code thach12 at checkout!</p>
+      <NewEventList/>
     </Modal>}
   </div>
   );
