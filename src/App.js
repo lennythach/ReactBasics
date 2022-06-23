@@ -7,23 +7,25 @@ import React, {useState} from 'react';
 import NewEventList from './components/NewEventList';
 
 function App() {
-  //----------States----------//
+  //------------States------------//
   const [showModal, setShowModal] = useState(false);
   const [showEvents, setShowEvent] = useState(false);
-  let [name, setName] = useState('Meiling');
+  const [name, setName] = useState('Meiling');
+  const [events, setEvents] = useState([]);
 
-  let [events, setEvents] = useState([]);
+
+  //----------functions----------//
+  const changeName = () => setName('Lenny');
+
+  const handleClose = () => {
+    setShowModal(false)
+  };
 
   const addEvent = (event) => {
     setEvents((prevEvents)=>{
       return [...prevEvents,event]
     })
-  };
-  //------functions-------//
-  const changeName = () => setName('Lenny');
-
-  const handleClose = () => {
-    setShowModal(false)
+    setShowModal(false);
   };
 
   const deleteEvent = (id) => {
