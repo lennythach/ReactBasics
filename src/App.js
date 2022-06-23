@@ -12,13 +12,13 @@ function App() {
   const [showEvents, setShowEvent] = useState(false);
   let [name, setName] = useState('Meiling');
 
-  let [events, setEvents] = useState([
-    {event:'Hello, This is my first react webapp!', id:1},
-    {event:'This will be the start of my success!', id:2},
-    {event:'I cannot wait to see what will happens next!', id:3}
-  ]);
+  let [events, setEvents] = useState([]);
 
-  console.log(showModal)
+  const addEvent = (event) => {
+    setEvents((prevEvents)=>{
+      return [...prevEvents,event]
+    })
+  };
   //------functions-------//
   const changeName = () => setName('Lenny');
 
@@ -27,8 +27,8 @@ function App() {
   };
 
   const deleteEvent = (id) => {
-    setEvents((prevEvents)=>{
-      return prevEvents.filter((event)=>{
+    setEvents((prevEvent)=>{
+      return prevEvent.filter((event)=>{
         return id !== event.id
       })
     })
@@ -61,10 +61,10 @@ function App() {
       </div>
     )}
     
-  {showEvents && <EventList events={events} deleteEvent={deleteEvent}/>}
+    {showEvents && <EventList events={events} deleteEvent={deleteEvent}/>}
     
     {showModal && <Modal handleClose={()=>handleClose()} isSaleModal={true} >
-      <NewEventList/>
+      <NewEventList addEvent={addEvent}/>
     </Modal>}
   </div>
   );
